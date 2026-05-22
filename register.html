@@ -1,0 +1,469 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register â€” Mubarah Online Quran Academy</title>
+  <meta name="description" content="Register for online Quran courses with Hafiza Mubarah Azeem. Select your course, country, and payment method.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .register-hero {
+      padding: 5rem 5% 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .register-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .register-copy {
+      max-width: 480px;
+    }
+    .form-panel {
+      background: rgba(255,255,255,0.95);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 30px 80px rgba(58,36,24,0.12);
+      border: 1px solid rgba(189,160,128,0.3);
+    }
+    .register-form {
+      display: grid;
+      gap: 1rem;
+    }
+    .form-group {
+      display: grid;
+      gap: 0.4rem;
+    }
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--cream-dark);
+      padding: 0.95rem 1rem;
+      font-size: 0.95rem;
+      color: var(--brown);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 4px rgba(201,135,122,0.12);
+    }
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .fee-output {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.15rem;
+      border-radius: 14px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      color: var(--rose-deep);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .form-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .register-note {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: 1rem;
+    }
+    /* Multi-course checkbox list */
+    .course-checklist {
+      display: grid;
+      gap: 0.5rem;
+    }
+    .course-check-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--cream-dark);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      user-select: none;
+    }
+    .course-check-item:hover {
+      border-color: var(--rose-light);
+      background: #fdf0ec;
+    }
+    .course-check-item.selected {
+      border-color: var(--rose);
+      background: #fdf0ec;
+      box-shadow: 0 0 0 3px rgba(201,135,122,0.12);
+    }
+    .course-check-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--rose-deep);
+      cursor: pointer;
+      flex-shrink: 0;
+      /* override the shared input styles */
+      border-radius: 4px !important;
+      border: none !important;
+      background: none !important;
+      padding: 0 !important;
+    }
+    .course-check-label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      flex: 1;
+    }
+    .course-check-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .course-check-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .course-check-fee {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--rose-deep);
+      white-space: nowrap;
+    }
+    .fee-breakdown {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+    @media (max-width: 900px) {
+      .register-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">â˜½</div>
+      <div class="brand-text">
+        <span class="brand-name">Mubarah Online Quran Academy</span>
+        <span class="brand-sub">Online Quran Education</span>
+      </div>
+    </a>
+
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="register.html" class="active">Register</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="register.html" class="nav-cta btn">Enroll Now</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-content">
+    <section class="register-hero">
+      <div class="section-header" data-animate>
+        <div class="section-label">Register Now</div>
+        <h1 class="section-title">Student Enrollment Form</h1>
+        <div class="ornament-divider"><span>âœ¦</span></div>
+        <p class="section-desc">Please complete your registration details below. Fee will update automatically based on selected course and country.</p>
+      </div>
+
+      <div class="register-inner" data-animate>
+        <div class="register-copy">
+          <h2>Secure your course</h2>
+          <p>Choose from our live Quran programmes and submit your information to reserve a spot. Female learners and young children are welcome in dedicated classes.</p>
+          <ul style="margin-top:1.5rem; padding-left:1.2rem; color: var(--text-muted);">
+            <li>Fully online one-on-one Quran lessons</li>
+            <li>Automatic fee selection for Pakistan and international students</li>
+            <li>Payment method and course selection included</li>
+          </ul>
+        </div>
+
+        <div class="form-panel">
+          <form id="registerForm" class="register-form">
+            <div class="form-group">
+              <label for="studentName">Student Name</label>
+              <input id="studentName" name="studentName" type="text" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required>
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input id="age" name="age" type="number" min="3" max="120" required>
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender" required>
+                <option value="" disabled selected>Select gender</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Course Name <span style="font-weight:400;font-size:0.78rem;">(select one or more)</span></label>
+              <div class="course-checklist" id="courseChecklist">
+                <!-- populated by JS -->
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="paymentMethod">Payment Method</label>
+              <select id="paymentMethod" name="paymentMethod" required>
+                <option value="Easypaisa" selected>Easypaisa</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="country">Country</label>
+              <select id="country" name="country" required>
+                <option value="" disabled selected>Select country</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="notes">Notes <span style="font-weight:400;">(optional)</span></label>
+              <textarea id="notes" name="notes" placeholder="Any special requests or details"></textarea>
+            </div>
+
+            <div class="fee-output">
+              <span>Course Fee</span>
+              <span id="feeDisplay">Select course + country</span>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Submit Registration</button>
+              <button type="reset" class="btn btn-outline">Clear Form</button>
+            </div>
+            <p id="submissionMessage" class="register-note" style="margin-top:0.5rem;"></p>
+            <p class="register-note">The fee is automatically assigned from the selected course. If country is Pakistan, local PKR fee will apply; otherwise the price is shown in US dollars.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-name">Mubarah Online Quran Academy</span>
+          <p>Bringing the light of the Quran to homes around the world through quality online education.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Courses</h4>
+          <ul>
+            <li><a href="courses.html">Nazra Quran</a></li>
+            <li><a href="courses.html">Hifz Quran</a></li>
+            <li><a href="courses.html">Tajweed</a></li>
+            <li><a href="courses.html">Rabana Duaien</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Academy</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="about.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Â© 2025 Mubarah Online Quran Academy. All rights reserved.</span>
+        <span>Built with â¤ï¸ for the Ummah</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    async function initRegisterForm() {
+      const data = await loadCourses();
+      const courses = [...data.weekdayCourses, ...data.weekendCourses];
+      const checklist    = document.getElementById('courseChecklist');
+      const countrySelect = document.getElementById('country');
+      const feeDisplay    = document.getElementById('feeDisplay');
+      const submissionMessage = document.getElementById('submissionMessage');
+
+      const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxcTXvYKvu9QYgBXJrs3jSaSopLw6eusEQUo2JPyQOq4I82p7Uql4ZlvlR8X_ATx4yz/exec';
+
+      function setMessage(text, isError = false) {
+        submissionMessage.textContent = text;
+        submissionMessage.style.color = isError ? '#b02a37' : '#186a3b';
+      }
+
+      // ── BUILD CHECKLIST ──
+      courses.forEach(course => {
+        const item = document.createElement('label');
+        item.className = 'course-check-item';
+        item.innerHTML = `
+          <input type="checkbox" value="${course.id}" data-fee="${course.fee}" data-fee-local="${course.feeLocal || ''}" data-name="${course.name}">
+          <span class="course-check-label">
+            <span class="course-check-name">${course.name}</span>
+            <span class="course-check-meta">${course.type} &nbsp;·&nbsp; ${course.days} &nbsp;·&nbsp; ${course.classTime}</span>
+          </span>
+          <span class="course-check-fee">
+            ${course.fee}
+            ${course.feeLocal ? `<span style="display:block;font-size:0.72rem;font-weight:600;color:var(--text-muted);text-align:right;">PKR ${course.feeLocal}</span>` : ''}
+          </span>
+        `;
+        const cb = item.querySelector('input');
+        cb.addEventListener('change', () => {
+          item.classList.toggle('selected', cb.checked);
+          updateFee();
+        });
+        checklist.appendChild(item);
+      });
+
+      // ── FEE CALCULATION ──
+      function getChecked() {
+        return Array.from(checklist.querySelectorAll('input[type="checkbox"]:checked'));
+      }
+
+      function updateFee() {
+        const checked = getChecked();
+        const country = countrySelect.value;
+
+        if (checked.length === 0 || !country) {
+          feeDisplay.innerHTML = 'Select course + country';
+          return;
+        }
+
+        const isPakistan = country.toLowerCase() === 'pakistan';
+        let total = 0;
+        let breakdown = [];
+
+        checked.forEach(cb => {
+          const feeStr   = isPakistan ? (cb.dataset.feeLocal || cb.dataset.fee) : cb.dataset.fee;
+          const numeric  = parseFloat(feeStr.replace(/[^0-9.]/g, '')) || 0;
+          total += numeric;
+          const display  = isPakistan && cb.dataset.feeLocal ? `PKR ${cb.dataset.feeLocal}` : cb.dataset.fee;
+          breakdown.push(`${cb.dataset.name}: ${display}`);
+        });
+
+        const totalLabel = isPakistan ? `PKR ${total.toLocaleString()}` : `$${total}`;
+        const breakdownHtml = checked.length > 1
+          ? `<div class="fee-breakdown">${breakdown.join(' &nbsp;+&nbsp; ')}</div>`
+          : '';
+
+        feeDisplay.innerHTML = `${totalLabel}${breakdownHtml}`;
+      }
+
+      countrySelect.addEventListener('change', updateFee);
+
+      // ── SUBMIT ──
+      async function submitRegistration(payload) {
+        const formBody = new URLSearchParams(payload).toString();
+        const response = await fetch(SHEET_ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          cache: 'no-cache',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+          body: formBody,
+        });
+        if (response.type === 'opaque') return {};
+        if (!response.ok) {
+          const text = await response.text();
+          throw new Error(`Server returned ${response.status}: ${text}`);
+        }
+        return response.json().catch(() => ({}));
+      }
+
+      const form = document.getElementById('registerForm');
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        setMessage('Submitting registration...', false);
+
+        const checked = getChecked();
+        const country = countrySelect.value;
+
+        if (checked.length === 0) {
+          setMessage('Please select at least one course before submitting.', true);
+          return;
+        }
+        if (!country) {
+          setMessage('Please select a country before submitting.', true);
+          return;
+        }
+
+        const isPakistan = country.toLowerCase() === 'pakistan';
+        let totalNum = 0;
+        const courseNames = [];
+        const courseIds   = [];
+
+        checked.forEach(cb => {
+          courseIds.push(cb.value);
+          courseNames.push(cb.dataset.name);
+          const feeStr  = isPakistan ? (cb.dataset.feeLocal || cb.dataset.fee) : cb.dataset.fee;
+          const numeric = parseFloat(feeStr.replace(/[^0-9.]/g, '')) || 0;
+          totalNum += numeric;
+        });
+
+        const feeValue = isPakistan ? `PKR ${totalNum.toLocaleString()}` : `$${totalNum}`;
+
+        const payload = {
+          studentName:   document.getElementById('studentName').value.trim(),
+          phone:         document.getElementById('phone').value.trim(),
+          email:         document.getElementById('email').value.trim(),
+          age:           document.getElementById('age').value,
+          gender:        document.getElementById('gender').value,
+          courseId:      courseIds.join(', '),
+          courseName:    courseNames.join(', '),
+          paymentMethod: document.getElementById('paymentMethod').value,
+          country,
+          fee:           feeValue,
+          notes:         document.getElementById('notes').value.trim(),
+          submittedAt:   new Date().toISOString(),
+        };
+
+        try {
+          await submitRegistration(payload);
+          setMessage('Registration submitted successfully. Thank you!', false);
+          form.reset();
+          checklist.querySelectorAll('.course-check-item').forEach(i => i.classList.remove('selected'));
+          feeDisplay.innerHTML = 'Select course + country';
+        } catch (error) {
+          setMessage(`Unable to submit registration: ${error.message}`, true);
+          console.error('Submit error:', error);
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initRegisterForm);
+  </script>
+</body>
+</html>

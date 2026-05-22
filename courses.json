@@ -1,0 +1,50 @@
+{
+  "weekdayCourses": [
+    {
+      "id": "nazra",
+      "name": "Nazra Quran Course",
+      "nameUrdu": "ناظرہ قرآن کورس",
+      "type": "Weekday",
+      "days": "Monday to Friday",
+      "classTime": "30 minutes per day",
+      "fee": "$50",
+      "feeLocal": "3000",
+      "description": "Learn to read the Quran with proper pronunciation. Perfect for beginners."
+    },
+    {
+      "id": "hifz",
+      "name": "Hifz Quran Course",
+      "nameUrdu": "حفظ قرآن کورس",
+      "type": "Weekday",
+      "days": "Monday to Friday",
+      "classTime": "30 minutes per day",
+      "fee": "$50",
+      "feeLocal": "5000",
+      "description": "Memorization of the Holy Quran with personalized guidance."
+    },
+    {
+      "id": "tajweed",
+      "name": "Tajweed Course",
+      "nameUrdu": "تجوید کورس",
+      "type": "Weekday",
+      "days": "Monday to Friday",
+      "classTime": "30 minutes per day",
+      "fee": "$50",
+      "feeLocal": "5000",
+      "description": "Master the rules of Tajweed for beautiful Quranic recitation."
+    }
+  ],
+  "weekendCourses": [
+    {
+      "id": "rabana",
+      "name": "Rabana Duaien Course",
+      "nameUrdu": "ربنا دعائیں کورس",
+      "type": "Weekend",
+      "days": "Saturday & Sunday",
+      "classTime": "20 minutes per day",
+      "fee": "$50",
+      "feeLocal": "2000",
+      "description": "Learn and memorize essential duas from the Quran."
+    }
+  ]
+}

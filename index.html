@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mubarah Online Quran Academy — Online Islamic Education</title>
+  <meta name="description" content="Learn the Quran online with expert tutors. Nazra, Hifz, Tajweed, and Dua courses available for all ages.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      padding: 6rem 5% 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-content { animation: fadeUp 0.7s ease both; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, rgba(200,169,110,0.15), rgba(200,169,110,0.05));
+      border: 1px solid rgba(200,169,110,0.3);
+      border-radius: 30px;
+      padding: 0.4rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .hero-eyebrow .dot {
+      width: 6px; height: 6px;
+      background: var(--rose);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-arabic {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--gold);
+      direction: rtl;
+      margin-bottom: 0.5rem;
+      opacity: 0.85;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--rose-deep);
+      position: relative;
+    }
+    .hero-title em::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--rose), var(--gold));
+      border-radius: 2px;
+    }
+
+    .hero-text {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat-block { }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--rose-deep);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Hero Image Side */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      animation: fadeUp 0.9s ease 0.15s both;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+    }
+    .hero-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      border: 1.5px solid var(--gold-light);
+      border-radius: 20px;
+      transform: rotate(3deg);
+    }
+    .hero-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 1px solid rgba(201,135,122,0.3);
+      border-radius: 18px;
+      transform: rotate(-1.5deg);
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 20px 60px rgba(90,45,25,0.2);
+    }
+
+    .hero-img-badge {
+      position: absolute;
+      bottom: -16px;
+      left: -16px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      box-shadow: 0 8px 24px var(--shadow);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .badge-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--rose-light), var(--rose));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .badge-text .top { font-size: 0.72rem; color: var(--text-muted); }
+    .badge-text .bot {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+
+    .floating-card {
+      position: absolute;
+      top: 20px; right: -20px;
+      background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+      border-radius: 12px;
+      padding: 0.9rem 1.2rem;
+      color: white;
+      z-index: 2;
+      box-shadow: 0 8px 24px rgba(163,87,77,0.35);
+      animation: float 4s ease-in-out infinite;
+    }
+    .floating-card .fc-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .floating-card .fc-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      opacity: 0.85;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    /* ── FEATURES BAR ── */
+    .features-bar {
+      background: var(--brown);
+      padding: 2rem 5%;
+      position: relative;
+      z-index: 1;
+    }
+    .features-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 1.5rem;
+      border-right: 1px solid rgba(255,253,249,0.1);
+    }
+    .feature-item:first-child { padding-left: 0; }
+    .feature-item:last-child  { border-right: none; }
+
+    .feature-icon-wrap {
+      width: 42px; height: 42px;
+      background: rgba(200,169,110,0.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .feature-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.1rem;
+    }
+    .feature-sub {
+      font-size: 0.73rem;
+      color: rgba(255,253,249,0.55);
+    }
+
+    /* ── COURSES PREVIEW SECTION ── */
+    .courses-section {
+      padding: 6rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* ── QURAN VERSE SECTION ── */
+    .verse-section {
+      background: linear-gradient(135deg, var(--rose-deep) 0%, var(--brown) 100%);
+      padding: 5rem 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .verse-section::before {
+      content: '﷽';
+      position: absolute;
+      font-family: 'Amiri', serif;
+      font-size: 8rem;
+      color: rgba(255,255,255,0.04);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+    .verse-arabic {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--gold-light);
+      direction: rtl;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    .verse-translation {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: rgba(255,253,249,0.8);
+      max-width: 600px;
+      margin: 0 auto 0.75rem;
+      line-height: 1.6;
+    }
+    .verse-source {
+      font-size: 0.78rem;
+      color: rgba(255,253,249,0.5);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-section {
+      padding: 6rem 5%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      z-index: 0;
+    }
+    .step-item {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .step-num {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--rose-light), var(--rose));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      margin: 0 auto 1rem;
+      box-shadow: 0 4px 16px rgba(201,135,122,0.3);
+    }
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+    }
+    .step-text {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      padding: 5rem 5%;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .cta-box {
+      background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+      border: 1.5px solid var(--gold-light);
+      border-radius: 24px;
+      padding: 3.5rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '◆';
+      position: absolute;
+      top: -20px; right: -10px;
+      font-size: 5rem;
+      color: rgba(200,169,110,0.08);
+    }
+    .cta-box .section-title { margin-bottom: 0.75rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 5rem; text-align: center; min-height: auto; }
+      .hero-visual { order: -1; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-arabic { text-align: center; }
+      .features-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid::before { display: none; }
+      .floating-card { display: none; }
+      .hero-img-badge { display: none; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 4rem 1.25rem 2rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .cta-box { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">☽</div>
+      <div class="brand-text">
+        <span class="brand-name">Mubarah Online Quran Academy</span>
+        <span class="brand-sub">Online Quran Education</span>
+      </div>
+    </a>
+
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="register.html" class="nav-cta btn">Enroll Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── PAGE CONTENT ── -->
+  <main class="page-content">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <div class="dot"></div>
+          <span>Enrolments Open — Limited Slots</span>
+        </div>
+
+        <p class="hero-arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+
+        <h1 class="hero-title">
+          Learn the Holy<br>
+          <em>Quran</em> Online<br>
+          with Excellence
+        </h1>
+
+        <p class="hero-text">
+          Join Mubarah Online Quran Academy and begin your journey with the Book of Allah.
+          Expert tutors, flexible scheduling, and personalised guidance for
+          students of all ages — from anywhere in the world.
+        </p>
+
+        <div class="hero-actions">
+          <a href="courses.html" class="btn btn-primary">View All Courses →</a>
+          <a href="register.html" class="btn btn-outline">Register Free Trial</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <img
+            src="https://www.shutterstock.com/image-photo/holy-al-quran-written-arabic-600nw-2145394919.jpg"
+            alt="Holy Quran — Mubarah Online Quran Academy"
+            onerror="this.style.background='linear-gradient(135deg,#E8C4BB,#C9877A)';this.removeAttribute('src');"
+          >
+
+
+        </div>
+
+        <div class="floating-card">
+          <div class="fc-num">30<span style="font-size:0.9rem">min</span></div>
+          <div class="fc-label">Daily Classes</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES BAR -->
+    <div class="features-bar">
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon-wrap">🎥</div>
+          <div>
+            <div class="feature-title">Live 1-on-1 Classes</div>
+            <div class="feature-sub">Interactive online sessions</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon-wrap">🗓</div>
+          <div>
+            <div class="feature-title">Flexible Schedule</div>
+            <div class="feature-sub">Mon–Fri & weekends</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon-wrap">🌍</div>
+          <div>
+            <div class="feature-title">Learn from Anywhere</div>
+            <div class="feature-sub">All you need is a device</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon-wrap">✨</div>
+          <div>
+            <div class="feature-title">Certified Tutors</div>
+            <div class="feature-sub">Qualified & experienced</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSES PREVIEW -->
+    <section class="courses-section">
+      <div class="section-header" data-animate>
+        <div class="section-label">Our Programmes</div>
+        <h2 class="section-title">Courses We Offer</h2>
+        <div class="ornament-divider"><span>✦</span></div>
+        <p class="section-desc">Choose a path tailored to your level and goals. All courses are conducted live with a dedicated tutor.</p>
+      </div>
+
+      <div class="courses-grid" id="coursesGrid">
+        <!-- Injected by JS -->
+      </div>
+
+      <div style="text-align:center; margin-top:2.5rem;" data-animate>
+        <a href="courses.html" class="btn btn-outline">Explore All Courses →</a>
+      </div>
+    </section>
+
+    <!-- QURAN VERSE -->
+    <section class="verse-section">
+      <p class="verse-arabic">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</p>
+      <p class="verse-translation">"The best of you are those who learn the Quran and teach it."</p>
+      <p class="verse-source">— Prophet Muhammad ﷺ (Sahih Al-Bukhari)</p>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section">
+      <div class="section-header" data-animate>
+        <div class="section-label">Simple Process</div>
+        <h2 class="section-title">How It Works</h2>
+        <div class="ornament-divider"><span>✦</span></div>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-item" data-animate>
+          <div class="step-num">1</div>
+          <div class="step-title">Choose a Course</div>
+          <p class="step-text">Browse our programmes and pick the one that fits your level and goals.</p>
+        </div>
+        <div class="step-item" data-animate>
+          <div class="step-num">2</div>
+          <div class="step-title">Register Online</div>
+          <p class="step-text">Fill out the quick registration form with your details and preferred course.</p>
+        </div>
+        <div class="step-item" data-animate>
+          <div class="step-num">3</div>
+          <div class="step-title">Get Matched</div>
+          <p class="step-text">We connect you with a qualified tutor and schedule your first session.</p>
+        </div>
+        <div class="step-item" data-animate>
+          <div class="step-num">4</div>
+          <div class="step-title">Start Learning</div>
+          <p class="step-text">Begin your Quranic journey with live, personalised daily classes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="cta-box" data-animate>
+        <div class="section-label">Limited Slots Available</div>
+        <h2 class="section-title">Begin Your Journey Today</h2>
+        <p class="section-desc" style="margin-bottom:2rem;">Spaces fill quickly. Register now to secure your free trial class and take the first step towards mastering the Quran.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="register.html" class="btn btn-primary">Register Now — It's Free</a>
+          <a href="courses.html" class="btn btn-outline">View Courses</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── COURSE DETAIL OVERLAY ── -->
+  <div class="course-detail-overlay" id="courseOverlay">
+    <div class="course-detail-panel">
+      <div class="detail-header">
+        <button class="close-btn" onclick="closeCourseDetail()">✕</button>
+        <p class="detail-arabic" id="detailArabic"></p>
+        <h2 class="detail-title" id="detailTitle"></h2>
+        <p class="detail-type" id="detailType"></p>
+      </div>
+      <div class="detail-body">
+        <p class="detail-desc" id="detailDesc"></p>
+        <div class="detail-grid">
+          <div class="detail-stat">
+            <div class="stat-label">Days</div>
+            <div class="stat-value" id="detailDays"></div>
+          </div>
+          <div class="detail-stat">
+            <div class="stat-label">Class Duration</div>
+            <div class="stat-value" id="detailTime"></div>
+          </div>
+        </div>
+        <div class="detail-fee-row">
+          <div>
+            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.2rem;">Monthly Fee</div>
+            <div class="detail-fee-price" id="detailFee"></div>
+          </div>
+          <div class="detail-fee-info">Per month<br>1-on-1 live sessions</div>
+        </div>
+        <div style="display:flex;gap:0.75rem;">
+          <a href="register.html" id="detailRegLink" class="btn btn-primary" style="flex:1;justify-content:center;">Enroll in This Course</a>
+          <button class="btn btn-outline" onclick="closeCourseDetail()" style="flex:0 0 auto;">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-name">Mubarah Online Quran Academy</span>
+          <p>Bringing the light of the Quran to homes around the world through quality online education.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Courses</h4>
+          <ul>
+            <li><a href="courses.html">Nazra Quran</a></li>
+            <li><a href="courses.html">Hifz Quran</a></li>
+            <li><a href="courses.html">Tajweed</a></li>
+            <li><a href="courses.html">Rabana Duaien</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Academy</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="about.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Mubarah Online Quran Academy. All rights reserved.</span>
+        <span>Built with ❤️ for the Ummah</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // ── Reads from courses.json — edit that file to update the site ──
+    loadCourses().then(data => {
+      const all = [...data.weekdayCourses, ...data.weekendCourses];
+      const grid = document.getElementById('coursesGrid');
+      if (grid) grid.innerHTML = all.slice(0, 4).map(buildCard).join('');
+    });
+  </script>
+</body>
+</html>

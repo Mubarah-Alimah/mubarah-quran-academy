@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses — Mubarah Online Quran Academy</title>
+  <meta name="description" content="Browse all Quran courses at Mubarah Online Quran Academy. Nazra, Hifz, Tajweed, and Dua courses for all levels.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--rose-deep) 0%, var(--brown) 60%, #2a1a10 100%);
+      padding: 5rem 5% 4rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40Z' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3Cpath d='M40 15 L65 40 L40 65 L15 40Z' fill='none' stroke='rgba(255,255,255,0.025)' stroke-width='1'/%3E%3C/svg%3E");
+    }
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .page-hero .section-label {
+      color: var(--gold-light);
+    }
+    .page-hero .section-label::before,
+    .page-hero .section-label::after {
+      color: rgba(255,255,255,0.3);
+    }
+    .page-hero .section-title { color: white; margin-bottom: 1rem; }
+    .page-hero .section-desc  { color: rgba(255,253,249,0.75); }
+
+    /* ── FILTER BAR ── */
+    .filter-section {
+      padding: 2.5rem 5% 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .filter-bar {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-bar span {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-right: 0.5rem;
+    }
+    .filter-btn {
+      padding: 0.45rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      border: 1.5px solid var(--border);
+      border-radius: 30px;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover {
+      border-color: var(--rose);
+      color: var(--rose-deep);
+      background: rgba(201,135,122,0.08);
+    }
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+      border-color: transparent;
+      color: white;
+      box-shadow: 0 3px 10px rgba(163,87,77,0.3);
+    }
+
+    /* ── COURSES LIST ── */
+    .courses-main {
+      padding: 2rem 5% 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Section grouping */
+    .course-group {
+      margin-bottom: 3.5rem;
+    }
+    .group-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .group-pill {
+      background: linear-gradient(135deg, var(--rose-light), var(--rose));
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+    }
+    .group-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .group-count {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    /* Full-width featured card layout */
+    .courses-grid-full {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* ── COMPARE TABLE ── */
+    .compare-section {
+      padding: 4rem 5%;
+      background: var(--cream-dark);
+      margin-top: 2rem;
+    }
+    .compare-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--shadow);
+      background: white;
+      margin-top: 2.5rem;
+    }
+    .compare-table thead tr {
+      background: linear-gradient(135deg, var(--rose-deep), var(--brown));
+      color: white;
+    }
+    .compare-table th {
+      padding: 1rem 1.25rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+    .compare-table td {
+      padding: 0.9rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    .compare-table tbody tr:last-child td { border-bottom: none; }
+    .compare-table tbody tr:nth-child(even) { background: var(--cream); }
+    .compare-table tbody tr:hover { background: rgba(201,135,122,0.06); }
+
+    .course-name-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .table-icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--rose-light), var(--rose));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .table-name  { font-weight: 700; color: var(--brown); }
+    .table-arabic { font-family: 'Amiri', serif; font-size: 0.85rem; color: var(--gold); direction: rtl; }
+
+    .fee-cell {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--rose-deep);
+    }
+    .enroll-link {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--rose-deep);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      padding: 0.35rem 0.8rem;
+      border: 1.5px solid var(--rose-light);
+      border-radius: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .enroll-link:hover {
+      background: var(--rose-light);
+    }
+
+    /* ── FAQ / INFO STRIP ── */
+    .info-strip {
+      padding: 4rem 5%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .info-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .info-card .ic-icon { font-size: 1.8rem; margin-bottom: 0.75rem; display: block; }
+    .info-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 0.4rem;
+    }
+    .info-card p {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      margin: 2rem 5% 4rem;
+      background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+      border-radius: 20px;
+      padding: 3rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 12px 40px rgba(163,87,77,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '◆';
+      position: absolute;
+      right: 2rem; top: -1rem;
+      font-size: 6rem;
+      color: rgba(255,255,255,0.07);
+    }
+    .cta-banner-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.4rem;
+    }
+    .cta-banner-text p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.8);
+    }
+    .cta-banner .btn-white {
+      background: white;
+      color: var(--rose-deep);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .cta-banner .btn-white:hover {
+      background: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .info-grid { grid-template-columns: 1fr; }
+      .compare-table { font-size: 0.82rem; }
+      .compare-table th, .compare-table td { padding: 0.75rem 0.8rem; }
+      .cta-banner { padding: 2rem 1.5rem; text-align: center; flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">☽</div>
+      <div class="brand-text">
+        <span class="brand-name">Mubarah Online Quran Academy</span>
+        <span class="brand-sub">Online Quran Education</span>
+      </div>
+    </a>
+
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="register.html" class="nav-cta btn">Enroll Now</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-content">
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div class="section-label">Mubarah Online Quran Academy</div>
+        <h1 class="section-title">Our Courses</h1>
+        <div class="ornament-divider"><span>✦</span></div>
+        <p class="section-desc">Structured programmes taught by qualified tutors — designed for all ages and levels. Click any course to see full details.</p>
+      </div>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-section">
+      <div class="filter-bar">
+        <span>Filter:</span>
+        <button class="filter-btn active" data-filter="all">All Courses</button>
+        <button class="filter-btn" data-filter="Weekday">Weekday</button>
+        <button class="filter-btn" data-filter="Weekend">Weekend</button>
+      </div>
+    </div>
+
+    <!-- COURSE CARDS -->
+    <div class="courses-main">
+
+      <!-- Weekday Group -->
+      <div class="course-group" id="weekdayGroup" data-animate>
+        <div class="group-header">
+          <span class="group-pill">Weekday</span>
+          <h2 class="group-title">Monday to Friday Programmes</h2>
+          <span class="group-count">3 courses · 30 min/day</span>
+        </div>
+        <div class="courses-grid-full" id="weekdayGrid"></div>
+      </div>
+
+      <!-- Weekend Group -->
+      <div class="course-group" id="weekendGroup" data-animate>
+        <div class="group-header">
+          <span class="group-pill" style="background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--brown);">Weekend</span>
+          <h2 class="group-title">Saturday & Sunday Programmes</h2>
+          <span class="group-count">1 course · 20 min/day</span>
+        </div>
+        <div class="courses-grid-full" id="weekendGrid"></div>
+      </div>
+
+    </div>
+
+    <!-- COMPARE TABLE -->
+    <div class="compare-section">
+      <div class="compare-inner">
+        <div class="section-header" data-animate>
+          <div class="section-label">At a Glance</div>
+          <h2 class="section-title">Compare All Courses</h2>
+          <div class="ornament-divider"><span>✦</span></div>
+        </div>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Course</th>
+              <th>Type</th>
+              <th>Schedule</th>
+              <th>Duration</th>
+              <th>Monthly Fee</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="compareTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- INFO CARDS -->
+    <div class="info-strip">
+      <div class="info-grid">
+        <div class="info-card" data-animate>
+          <span class="ic-icon">🎓</span>
+          <h4>Qualified Tutors</h4>
+          <p>All tutors are certified and hold Ijazah in Quran recitation and Tajweed.</p>
+        </div>
+        <div class="info-card" data-animate>
+          <span class="ic-icon">🆓</span>
+          <h4>Free Trial Class</h4>
+          <p>Try any course completely free before committing. No credit card needed.</p>
+        </div>
+        <div class="info-card" data-animate>
+          <span class="ic-icon">📱</span>
+          <h4>Any Device</h4>
+          <p>Join classes from your phone, tablet, or computer — from anywhere.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner" data-animate>
+      <div class="cta-banner-text">
+        <h2>Ready to Start?</h2>
+        <p>Limited slots available — register today and claim your free trial class.</p>
+      </div>
+      <a href="register.html" class="btn btn-white">Enroll for Free →</a>
+    </div>
+
+  </main>
+
+  <!-- ── COURSE DETAIL OVERLAY ── -->
+  <div class="course-detail-overlay" id="courseOverlay">
+    <div class="course-detail-panel">
+      <div class="detail-header">
+        <button class="close-btn" onclick="closeCourseDetail()">✕</button>
+        <p class="detail-arabic" id="detailArabic"></p>
+        <h2 class="detail-title" id="detailTitle"></h2>
+        <p class="detail-type" id="detailType"></p>
+      </div>
+      <div class="detail-body">
+        <p class="detail-desc" id="detailDesc"></p>
+        <div class="detail-grid">
+          <div class="detail-stat">
+            <div class="stat-label">Days</div>
+            <div class="stat-value" id="detailDays"></div>
+          </div>
+          <div class="detail-stat">
+            <div class="stat-label">Class Duration</div>
+            <div class="stat-value" id="detailTime"></div>
+          </div>
+        </div>
+        <div class="detail-fee-row">
+          <div>
+            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.2rem;">Monthly Fee</div>
+            <div class="detail-fee-price" id="detailFee"></div>
+          </div>
+          <div class="detail-fee-info">Per month<br>1-on-1 live sessions</div>
+        </div>
+        <div style="display:flex;gap:0.75rem;">
+          <a href="register.html" id="detailRegLink" class="btn btn-primary" style="flex:1;justify-content:center;">Enroll in This Course</a>
+          <button class="btn btn-outline" onclick="closeCourseDetail()" style="flex:0 0 auto;">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-name">Mubarah Online Quran Academy</span>
+          <p>Bringing the light of the Quran to homes around the world through quality online education.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Courses</h4>
+          <ul>
+            <li><a href="courses.html">Nazra Quran</a></li>
+            <li><a href="courses.html">Hifz Quran</a></li>
+            <li><a href="courses.html">Tajweed</a></li>
+            <li><a href="courses.html">Rabana Duaien</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Academy</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="about.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Mubarah Online Quran Academy. All rights reserved.</span>
+        <span>Built with ❤️ for the Ummah</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // ── Reads from courses.json — edit that file to update the site ──
+    loadCourses().then(data => {
+      const all = [...data.weekdayCourses, ...data.weekendCourses];
+
+      // Cards
+      document.getElementById('weekdayGrid').innerHTML = data.weekdayCourses.map(buildCard).join('');
+      document.getElementById('weekendGrid').innerHTML  = data.weekendCourses.map(buildCard).join('');
+
+      // Compare table
+      document.getElementById('compareTableBody').innerHTML = all.map(c => `
+        <tr>
+          <td>
+            <div class="course-name-cell">
+              <div class="table-icon">${ICONS[c.id] || '📘'}</div>
+              <div>
+                <div class="table-name">${c.name}</div>
+                <div class="table-arabic">${c.nameUrdu}</div>
+              </div>
+            </div>
+          </td>
+          <td>${c.type}</td>
+          <td>${c.days}</td>
+          <td>${c.classTime}</td>
+          <td class="fee-cell">${c.fee}${c.feeLocal ? ` • PKR ${c.feeLocal}` : ''}</td>
+          <td><a class="enroll-link" href="register.html?course=${c.id}">Enroll →</a></td>
+        </tr>
+      `).join('');
+
+      // Filter buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const f = btn.dataset.filter;
+          document.getElementById('weekdayGroup').style.display = (f === 'all' || f === 'Weekday') ? '' : 'none';
+          document.getElementById('weekendGroup').style.display = (f === 'all' || f === 'Weekend') ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
