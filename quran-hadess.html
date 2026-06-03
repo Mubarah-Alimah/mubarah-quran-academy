@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quran & Hadess Books</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-content { padding: 100px 20px 60px; }
+    .books-hero { max-width: 960px; margin: 0 auto 2rem; }
+    .books-hero .hero-actions { flex-wrap: wrap; gap: 1rem; }
+    .button { display: inline-flex; align-items: center; justify-content: center; border: none; border-radius: 999px; cursor: pointer; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; padding: 0.95rem 1.5rem; min-width: 190px; }
+    .button:hover { transform: translateY(-1px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
+    .button-primary { background: linear-gradient(135deg, #C9877A, #A3574D); color: #fff; }
+    .button-secondary { background: #FDF6EE; color: #5C3D2E; border: 1px solid rgba(92,61,46,0.18); }
+    .hidden { display: none; }
+    .books-panel { max-width: 960px; margin: 0 auto; display: grid; gap: 1.5rem; }
+    .books-panel .panel-card { background: #fffdfa; border: 1px solid rgba(200,169,110,0.2); border-radius: 18px; padding: 1.6rem; box-shadow: 0 20px 45px rgba(90,45,25,0.08); }
+    .panel-card h2 { margin-bottom: 0.75rem; font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: #5C3D2E; }
+    .panel-card p { margin-bottom: 1rem; color: #7A5B4A; line-height: 1.7; }
+    .link-grid { display: grid; gap: 1rem; }
+    .link-item { display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: #fff; border-radius: 14px; padding: 1rem 1.2rem; border: 1px solid rgba(92,61,46,0.08); }
+    .link-item strong { display: block; color: #5C3D2E; font-size: 1rem; }
+    .link-item a { display: inline-flex; align-items: center; justify-content: center; background: #C9877A; color: white; text-decoration: none; border-radius: 999px; padding: 0.7rem 1rem; font-size: 0.95rem; }
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; padding-top: 5rem; }
+      .books-hero { text-align: center; }
+      .hero-actions { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-brand" href="index.html">
+      <span class="brand-icon">Q</span>
+      <span class="brand-text">
+        <span class="brand-name">Quran & Hadess</span>
+        <span class="brand-sub">Book Links</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="quran-hadess.html" class="active">Quran & Hadess</a></li>
+      <li><a href="register.html" class="nav-cta btn">Enroll Now</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-content">
+    <section class="hero books-hero">
+      <div class="hero-content">
+        <p class="hero-eyebrow"><span>Online Resource</span></p>
+        <h1 class="hero-title">Quran Majeed & Hadess Book Collection</h1>
+        <p class="hero-text">Below are the Quran folder and Hadess book folders. Each link opens the Google Drive collection in a new tab.</p>
+      </div>
+    </section>
+
+    <section id="quranSection" class="books-panel">
+      <div class="panel-card">
+        <h2>Quran Majeed</h2>
+        <p>Access the Quran Drive folder to read the Quran Majeed collection in Arabic, Urdu, and English translation.</p>
+        <a class="button button-primary" href="https://drive.google.com/drive/folders/1H1gKER8wu7-tSit67Z42cwJCMlrk4fUA?usp=drive_link" target="_blank" rel="noopener">Open Quran Folder</a>
+      </div>
+    </section>
+
+    <section id="hadithSection" class="books-panel">
+      <div class="panel-card">
+        <h2>Hadess Books</h2>
+        <p>Explore the primary Hadess collections below. Click any folder to open it in Google Drive.</p>
+        <div class="link-grid">
+          <div class="link-item">
+            <strong>1. Sahih Al-Bukhari</strong>
+            <a href="https://drive.google.com/drive/folders/1MyfcDEbn1T6eUq3baSQWVIQKRMnS4bxs?usp=drive_link" target="_blank" rel="noopener">Open</a>
+          </div>
+          <div class="link-item">
+            <strong>2. Sahih Muslim</strong>
+            <a href="https://drive.google.com/drive/folders/1_9NpOBpMjYh8KVX6qIXaZNRVC8MDVJYW?usp=drive_link" target="_blank" rel="noopener">Open</a>
+          </div>
+          <div class="link-item">
+            <strong>3. Sunan Abi Dawud</strong>
+            <a href="https://drive.google.com/drive/folders/1ytE2VMxjSXaGLm8h-7gQDs-Ax4XoKcXn?usp=drive_link" target="_blank" rel="noopener">Open</a>
+          </div>
+          <div class="link-item">
+            <strong>4. Jami' al-Tirmidhi</strong>
+            <a href="https://drive.google.com/drive/folders/1Zay0uqCknoMa8dVmONhj5lPwVlHDGqfz?usp=drive_link" target="_blank" rel="noopener">Open</a>
+          </div>
+          <div class="link-item">
+            <strong>5. Sunan al-Nasa'i</strong>
+            <a href="https://drive.google.com/drive/folders/1K8efcqCnNKwGzEGCLBlZBFFBl8E0Ui9T?usp=drive_link" target="_blank" rel="noopener">Open</a>
+          </div>
+          <div class="link-item">
+            <strong>6. Sunan Ibn Majah</strong>
+            <a href="https://drive.google.com/drive/folders/12QhsQB_dx-v-8G8DxCmxenP1FIDP6HvE?usp=drive_link" target="_blank" rel="noopener">Open</a>
+          </div>
+          <div class="link-item">
+            <strong>7. Maza'iq al-Haqq</strong>
+            <a href="https://drive.google.com/drive/folders/1CcexqZAEewXhyCPxqVgb9Rkb9jbXFeKS?usp=drive_link" target="_blank" rel="noopener">Open</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
