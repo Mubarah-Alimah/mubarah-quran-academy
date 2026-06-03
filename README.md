@@ -1,1 +1,1 @@
-# mubarah-quran-academy
+# Mubarah Quran Academy
