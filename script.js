@@ -128,3 +128,168 @@ function buildCard(c) {
       </div>
     </div>`;
 }
+
+
+// ── HARDCODED CHATBOT DATA ──
+const CHATBOT_DATA = {
+  tutorName: 'Hafiza Mubarah Azeem',
+  tutorQualification: 'BS Islamic Studies + Sharia',
+  tutorExperience: 'Experienced Quran tutor with a strong focus on Tajweed, Quran reading, memorization, and dua learning.',
+  tutorFocus: 'Teaching women and young children only, in a safe, respectful, and nurturing learning environment.',
+  courses: [
+    { name: 'Nazra Quran Course',    days: 'Monday to Friday',  time: '30 minutes/day', fee: '$50 / PKR 3,000 per month' },
+    { name: 'Hifz Quran Course',     days: 'Monday to Friday',  time: '30 minutes/day', fee: '$50 / PKR 5,000 per month' },
+    { name: 'Tajweed Course',        days: 'Monday to Friday',  time: '30 minutes/day', fee: '$50 / PKR 5,000 per month' },
+    { name: 'Rabana Duaien Course',  days: 'Saturday & Sunday', time: '20 minutes/day', fee: '$50 / PKR 2,000 per month' },
+  ]
+};
+
+const CHATBOT_ANSWERS = {
+  tutorName: `The tutor's name is ${CHATBOT_DATA.tutorName}.`,
+  tutorQualification: `${CHATBOT_DATA.tutorName} holds a ${CHATBOT_DATA.tutorQualification}.\n${CHATBOT_DATA.tutorExperience}\n${CHATBOT_DATA.tutorFocus}`,
+  courses: `We offer the following courses:\n\n` +
+    CHATBOT_DATA.courses.map((c, i) => `${i + 1}. ${c.name}\n   Days: ${c.days}\n   Duration: ${c.time}`).join('\n\n'),
+  coursesWithPrices: `Our courses and monthly fees:\n\n` +
+    CHATBOT_DATA.courses.map((c, i) => `${i + 1}. ${c.name}\n   Days: ${c.days} | Duration: ${c.time}\n   Fee: ${c.fee}`).join('\n\n'),
+};
+
+// ── CHATBOT HELPERS ──
+function makeChatMessage(text, sender = 'bot') {
+  const el = document.createElement('div');
+  el.className = `chatbot-message ${sender}`;
+  el.style.whiteSpace = 'pre-wrap';
+  el.textContent = text;
+  return el;
+}
+
+function setChatStatus(message) {
+  const status = document.getElementById('chatbotStatus');
+  if (status) status.textContent = message;
+}
+
+function toggleChatWindow(show) {
+  const windowEl = document.getElementById('chatbotWindow');
+  if (!windowEl) return;
+  windowEl.classList.toggle('hidden', !show);
+}
+
+// ── RENDER DROPDOWN MENU ──
+// ── RENDER FULL MENU (4 questions + Continue + End Chat — all at once) ──
+function renderDropdownMenu() {
+  const bodyEl = document.getElementById('chatbotBody');
+  if (!bodyEl) return;
+
+  const label = document.createElement('p');
+  label.className = 'chatbot-message bot';
+  label.textContent = 'Please select a topic:';
+  bodyEl.appendChild(label);
+
+  const menuWrapper = document.createElement('div');
+  menuWrapper.className = 'chatbot-dropdown-menu';
+  menuWrapper.id = 'chatbotDropdownMenu';
+
+  const questions = [
+    { key: 'tutorName',          label: 'What is the Tutor Name?' },
+    { key: 'tutorQualification', label: 'What is the Tutor Qualification?' },
+    { key: 'courses',            label: 'Courses' },
+    { key: 'coursesWithPrices',  label: 'Courses with Prices' },
+  ];
+
+  // ── 4 question buttons ──
+  questions.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'chatbot-dropdown-btn';
+    btn.textContent = opt.label;
+    btn.type = 'button';
+    btn.addEventListener('click', () => handleDropdownChoice(opt.key, opt.label));
+    menuWrapper.appendChild(btn);
+  });
+
+  // ── divider ──
+  const divider = document.createElement('div');
+  divider.className = 'chatbot-menu-divider';
+  menuWrapper.appendChild(divider);
+
+  // ── End Chat button ──
+  const endBtn = document.createElement('button');
+  endBtn.className = 'chatbot-dropdown-btn chatbot-dropdown-btn-end';
+  endBtn.textContent = 'End Chat';
+  endBtn.type = 'button';
+  endBtn.addEventListener('click', () => {
+    if (menuWrapper.previousElementSibling && menuWrapper.previousElementSibling.classList.contains('chatbot-message')) {
+      menuWrapper.previousElementSibling.remove();
+    }
+    menuWrapper.remove();
+    bodyEl.appendChild(makeChatMessage('Thank you for chatting with us! May Allah bless you. Feel free to return anytime. \uD83C\uDF19', 'bot'));
+    setChatStatus('Chat ended.');
+    bodyEl.scrollTop = bodyEl.scrollHeight;
+  });
+  menuWrapper.appendChild(endBtn);
+
+  bodyEl.appendChild(menuWrapper);
+  bodyEl.scrollTop = bodyEl.scrollHeight;
+}
+
+// ── HANDLE DROPDOWN CHOICE ──
+function handleDropdownChoice(key, label) {
+  const bodyEl = document.getElementById('chatbotBody');
+  if (!bodyEl) return;
+
+  // Remove existing menu and its label
+  const menu = document.getElementById('chatbotDropdownMenu');
+  if (menu) {
+    if (menu.previousElementSibling && menu.previousElementSibling.classList.contains('chatbot-message')) {
+      menu.previousElementSibling.remove();
+    }
+    menu.remove();
+  }
+
+  // Show user question bubble
+  bodyEl.appendChild(makeChatMessage(label, 'user'));
+
+  // Show answer bubble
+  const answer = CHATBOT_ANSWERS[key] || 'Sorry, I do not have information on that topic.';
+  bodyEl.appendChild(makeChatMessage(answer, 'bot'));
+  bodyEl.scrollTop = bodyEl.scrollHeight;
+
+  // Rebuild menu AFTER the browser has painted the answer
+  setTimeout(() => {
+    renderDropdownMenu();
+    bodyEl.scrollTop = bodyEl.scrollHeight;
+  }, 0);
+}
+
+// ── SETUP CHATBOT ──
+function setupChatbot() {
+  const toggle   = document.getElementById('chatbotToggle');
+  const closeBtn = document.getElementById('chatbotClose');
+
+  if (toggle) {
+    toggle.addEventListener('click', () => toggleChatWindow(true));
+  }
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => toggleChatWindow(false));
+  }
+
+  const refreshBtn = document.getElementById('chatbotRefresh');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      // Spin animation
+      refreshBtn.classList.add('spinning');
+      setTimeout(() => refreshBtn.classList.remove('spinning'), 500);
+
+      // Clear chat body back to greeting
+      const bodyEl = document.getElementById('chatbotBody');
+      if (bodyEl) {
+        bodyEl.innerHTML = '<div class="chatbot-message bot">Hello! Ask me anything about Mubarah Online Quran Academy, the tutor, available courses, schedule or fees.</div>';
+      }
+      setChatStatus('Select a topic from the menu above.');
+      renderDropdownMenu();
+    });
+  }
+
+  // Pre-render the menu immediately on page load so it's instant when opened
+  renderDropdownMenu();
+}
+
+setupChatbot();
