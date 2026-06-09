@@ -104,7 +104,6 @@
       padding-top: 2rem;
       border-top: 1px solid var(--border);
     }
-    .stat-block { }
     .stat-number {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2rem;
@@ -468,6 +467,9 @@
           <a href="courses.html" class="btn btn-primary">View All Courses →</a>
           <a href="register.html" class="btn btn-outline">Register Free Trial</a>
         </div>
+        <div class="hero-chat-note" data-animate>
+          <p>Need quick answers about courses, fees, or the tutor? Use our academy chatbot for academy and course details only.</p>
+        </div>
       </div>
 
       <div class="hero-visual">
@@ -662,6 +664,38 @@
       </div>
     </div>
   </footer>
+
+  <div class="chatbot-widget" id="chatbotWidget">
+    <button class="chatbot-toggle" id="chatbotToggle" type="button" aria-label="Open Academy Chatbot"><div class="chatbot-toggle-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="chatbot-toggle-label">
+
+
+<span class="chatbot-toggle-title">Academy Chatbot</span><span class="chatbot-toggle-sub">Ask about courses, tutor &amp; fees</span></div><div class="chatbot-toggle-ping"></div></button>
+    <div class="chatbot-window hidden" id="chatbotWindow" role="dialog" aria-label="Academy chatbot">
+      <div class="chatbot-header">
+        <div>
+          <div class="chatbot-title">Academy Chat</div>
+          <div class="chatbot-subtitle">I answer only academy and course-related questions.</div>
+        </div>
+        <div class="chatbot-header-btns">
+          <button class="chatbot-refresh" id="chatbotRefresh" type="button" aria-label="Start new chat" title="Start new chat">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+          </button>
+          <button class="chatbot-close" id="chatbotClose" type="button" aria-label="Close chat">✕</button>
+        </div>
+      </div>
+      <div class="chatbot-body" id="chatbotBody">
+        <div class="chatbot-message bot">Hello! Ask me anything about Mubarah Online Quran Academy, the tutor, available courses, schedule or fees.</div>
+      </div>
+      
+        
+        
+      
+      <div class="chatbot-status" id="chatbotStatus">Select a topic from the menu above.</div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
   <script>
